@@ -2389,12 +2389,15 @@
      * });
      */
     Konva.Factory.addOverloadedGetterSetter(Konva.Node, 'size');
-
+    
+    //向后兼容，告诉使用者，旧的方法将要过时，请使用新的方法名称。
     Konva.Factory.backCompat(Konva.Node, {
         rotateDeg: 'rotate',
         setRotationDeg: 'setRotation',
         getRotationDeg: 'getRotation'
     });
 
+    //把Konva.Node.prototype上的方法全部map到Konva.Collection.prototype上。
+    //这样的话：如果一个Collection对象有10个Node对象，调用collection.method()时，会遍历该集合分别调用Node对象的相应方法。
     Konva.Collection.mapMethods(Konva.Node);
 })(Konva);
