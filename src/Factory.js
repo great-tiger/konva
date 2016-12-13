@@ -35,6 +35,8 @@
                 return this;
             };
         },
+        //举例：Konva.Factory.addComponentsGetterSetter(Konva.Node, 'skew', ['x', 'y']);
+        //getSkew() 获取到的就是一个对象,比如：{x:0,y:0}
         addComponentsGetterSetter: function(constructor, attr, components, validator, after) {
             var len = components.length,
                 capitalize = Konva.Util._capitalize,
