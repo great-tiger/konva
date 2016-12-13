@@ -74,7 +74,7 @@
     Konva.Stage = function(config) {
         this.___init(config);
     };
-
+    //遍历对象，把key作为方法名称放到prototype上。
     Konva.Util.addMethods(Konva.Stage, {
         ___init: function(config) {
             this.nodeType = STAGE;
