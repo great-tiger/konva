@@ -1,3 +1,17 @@
+/*
+DATE:2016-12-13
+比较重要的对象
+this._id = Konva.idCounter++;
+this.eventListeners = {};
+this.attrs = {};//保存属性键值对
+
+事件机制：
+on
+off
+fire
+
+
+*/
 (function(Konva) {
     'use strict';
     // CONSTANTS
