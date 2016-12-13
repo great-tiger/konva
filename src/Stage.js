@@ -56,6 +56,7 @@
     }
 
     /**
+     * stage设计用来包含多个层
      * Stage constructor.  A stage is used to contain multiple layers
      * @constructor
      * @memberof Konva
@@ -736,7 +737,10 @@
     Konva.Util.extend(Konva.Stage, Konva.Container);
 
     // add getters and setters
+    // 通过getContainer()访问对象  this.attrs["container"] 的值
     Konva.Factory.addGetter(Konva.Stage, 'container');
+    //可以通过container() 获取this.attrs["container"] 的值
+    //可以通过container(value) 设置this.attrs["container"] 的值
     Konva.Factory.addOverloadedGetterSetter(Konva.Stage, 'container');
 
     /**
