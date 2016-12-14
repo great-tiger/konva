@@ -609,6 +609,13 @@ fire
          * @example
          * node.destroy();
          */
+         /*
+            Konva.ids { id:node }  保存id到node的映射
+            Konva.names { name:[nodes] } 保存name到node的映射
+
+            destroy 从上面两个集合中删除，Node就没有引用了，自动就被垃圾回收机制回收了。
+
+         */
         destroy: function() {
             // remove from ids and names hashes
             Konva._removeId(this.getId());
