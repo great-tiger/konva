@@ -67,6 +67,8 @@ fire:
       this.bufferCanvas = new Konva.SceneCanvas();  设置Canvas
       this.bufferHitCanvas = new Konva.HitCanvas({pixelRatio: 1});  设置Canvas
       _resizeDOM()  调整画布大小和画布容器大小
+   _bindContentEvents()  
+      在<div class="konvajs-content" role="presentation" style="position: relative;"></div>上绑定事件。
 
 5、Canvas.js解析
    Konva.SceneCanvas
