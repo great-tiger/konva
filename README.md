@@ -49,7 +49,13 @@ fire:
    初始化过程如此简单，那就再深究一下吧，Container 到底有什么功能。
    add(child)
    destory()
-
+   getChildren()
+       get only circles
+       var circles = layer.getChildren(function(node){
+          return node.getClassName() === 'Circle';
+       });
+   
 阅读所得待总结：
 继承方法
 向后兼容提示
+Konva.Collection
