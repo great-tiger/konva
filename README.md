@@ -79,7 +79,7 @@ fire:
 
    其实这样的架构也很好理解。在原生Canvas中有一个Context对象。
    在Konvas中分别对原生的Canvas和Context对象进行了封装。
-   
+
 6、Context.js解析
    Konva.SceneContext-->>Konva.Context
    Konva.HitContext-->>Konva.Context
@@ -92,9 +92,13 @@ fire:
    		scale 调用原生的scale方法
    		rotate 调用原生的rotate方法
    		reset 设置单位矩阵,与原生的ResetTransform类似
-
    		其他api也大多是对原生api的封装
-  
+
+   Konva.SceneContext
+        在基类的基础上提供了几个工具方法
+        
+   Konva.HitContext
+        在基类的基础上提供了几个工具方法
 阅读所得待总结：
 继承方法
 向后兼容提示
