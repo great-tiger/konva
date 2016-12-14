@@ -76,6 +76,10 @@ fire:
 
    Konva.SceneContext(this)
    Konva.HitContext(this)  请详看Context.js解析
+
+   其实这样的架构也很好理解。在原生Canvas中有一个Context对象。
+   在Konvas中分别对原生的Canvas和Context对象进行了封装。
+   
 6、Context.js解析
    Konva.SceneContext-->>Konva.Context
    Konva.HitContext-->>Konva.Context
