@@ -702,6 +702,7 @@
             container.innerHTML = EMPTY_STRING;
 
             // content
+            // 构建html并append到container中 <div class="konvajs-content" role="presentation" style="position: relative;"></div>
             this.content = Konva.document.createElement(DIV);
             this.content.style.position = RELATIVE;
             this.content.className = KONVA_CONTENT;

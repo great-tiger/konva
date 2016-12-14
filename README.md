@@ -6,6 +6,9 @@ Group->Container->Node
 Layer->BaseLayer->Container->Node    
 Rect->Shape->Node  
 
+#使用时，注意事项
+Stage下只能添加Layer，不是Layer会报错的。
+
 Konva中的集合对象
 Konva.Collection 继承自数组，主要提供了each方法。
 把Konva.Node.prototype上的方法全部map到Konva.Collection.prototype上。
@@ -55,7 +58,25 @@ fire:
           return node.getClassName() === 'Circle';
        });
    hasChildren()
-   
+   removeChildren()
+   destroyChildren()
+   等等吧，主要集中了集合的增、删、找、克隆。剩下的就是与canvas绘画有关的api了。
+4、Stage初始化
+   this._buildDOM()
+      构建content并append到container中 <div class="konvajs-content" role="presentation" style="position: relative;"></div>
+
+
+5、Canvas.js解析
+   Konva.SceneCanvas
+   Konva.HitCanvas
+   都继承自Konva.Canvas，该类在初始化的时候创建了一个canvas，this._canvas，并设置了一些style。
+
+   Konva.SceneCanvas
+   Konva.HitCanvas 初始化的时候，设置this._canvas的宽高。设置对应的context,两个上下文如下：
+
+   Konva.SceneContext(this)
+   Konva.HitContext(this)  请详看Context.js解析
+6、Context.js解析
 阅读所得待总结：
 继承方法
 向后兼容提示

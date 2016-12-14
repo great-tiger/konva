@@ -59,6 +59,7 @@
          * @returns {CanvasContext} context
          */
         getContext: function() {
+            //这个值在子类中设置
             return this.context;
         },
         /**
