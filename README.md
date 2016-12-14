@@ -15,8 +15,25 @@ Konva.Collection.mapMethods(Konva.Node);
 
 Konva.idCounter++ 全局计数器，用来设置id
 
-
-
+1、事件机制，支持自定义事件
+事件机制相关的代码在基类Node.js中，记住 Node 与 Stage 支持的事件类型不一样。虽然 Stage 是 Node 的子类。比如：click contentClick
+on:
+   注册事件，处理程序保存到了eventListeners对象中(每一个Node都有这么一个对象)。暂不考虑事件代理。
+   on("click.namespace",handler) 
+   eventListener={
+     "click":[
+		{
+			name:"namespace",
+			handler:handler
+	    }
+     ]
+   }
+off:
+   注销事件，从this.eventListener中删除事件处理程序。
+fire: 
+   function(eventType, evt, bubble)   bubble为true则表示触发事件并冒泡
+   this._fireAndBubble(eventType, evt);  向父级冒泡this._fireAndBubble.call(this.parent, eventType, evt);
+   this._fire(eventType, evt);  从this.eventListener中查找并触发事件处理程序，currentTarget 就是节点自己。
 阅读所得待总结：
 继承方法
 向后兼容提示

@@ -510,6 +510,8 @@ fire
          * // remove listener by name
          * node.off('click.foo');
          */
+
+         // _off 从 this.eventListeners 中删除数据
         off: function(evtStr) {
             var events = (evtStr || '').split(SPACE),
                 len = events.length,
@@ -1658,6 +1660,7 @@ fire
                 // the following two conditions must be true in order to remove a handler:
                 // 1) the current event name cannot be konva unless the event name is konva
                 //    this enables developers to force remove a konva specific listener for whatever reason
+                //    evtName !== 'konva' || name === 'konva' 这个判断的作用是防止用户删除系统使用的事件，但是又可以指定name来强制删除。
                 // 2) an event name is not specified, or if one is specified, it matches the current event name
                 if((evtName !== 'konva' || name === 'konva') && (!name || evtName === name)) {
                     evtListeners.splice(i, 1);
