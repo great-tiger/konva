@@ -88,6 +88,8 @@ fire:
    		scale 调用原生的scale方法
    		rotate 调用原生的rotate方法
    		reset 设置单位矩阵,与原生的ResetTransform类似
+
+   		其他api也大多是对原生api的封装
   
 阅读所得待总结：
 继承方法
