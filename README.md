@@ -79,7 +79,16 @@ fire:
 6、Context.js解析
    Konva.SceneContext-->>Konva.Context
    Konva.HitContext-->>Konva.Context
-   
+
+   Konva.Context 初始化时 设置this._context = canvas._canvas.getContext('2d');
+        定义了一些与矩阵变化有关的接口(用来设置当前坐标系)
+   		setTransform 调用原生setTransform方法
+   		transform 调用原生的transform方法
+   		translate 调用原生的translate方法
+   		scale 调用原生的scale方法
+   		rotate 调用原生的rotate方法
+   		reset 设置单位矩阵,与原生的ResetTransform类似
+  
 阅读所得待总结：
 继承方法
 向后兼容提示
