@@ -47,6 +47,7 @@ fire:
    this.children = new Konva.Collection(); //实例化集合对象
    Konva.Node.call(this, config); //直接调用基类的构造函数
    初始化过程如此简单，那就再深究一下吧，Container 到底有什么功能。
+   add(child)
 
 阅读所得待总结：
 继承方法
