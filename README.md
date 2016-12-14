@@ -77,6 +77,9 @@ fire:
    Konva.SceneContext(this)
    Konva.HitContext(this)  请详看Context.js解析
 6、Context.js解析
+   Konva.SceneContext-->>Konva.Context
+   Konva.HitContext-->>Konva.Context
+   
 阅读所得待总结：
 继承方法
 向后兼容提示
