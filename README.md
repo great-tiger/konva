@@ -54,6 +54,7 @@ fire:
        var circles = layer.getChildren(function(node){
           return node.getClassName() === 'Circle';
        });
+   hasChildren()
    
 阅读所得待总结：
 继承方法
