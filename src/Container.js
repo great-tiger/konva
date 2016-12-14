@@ -103,6 +103,15 @@
          * @example
          * layer.add(shape1, shape2, shape3);
          */
+
+        /**
+          1、如果child原来属于其他的容器，则从该容器中删除，然后添加到新容器中。
+          2、添加到新容器
+            child.index = children.length;  //parent.children.splice(this.index, 1);删除时方便。
+            child.parent = this;
+            children.push(child);
+          3、触发add事件
+        */
         add: function(child) {
             if (arguments.length > 1) {
                 for (var i = 0; i < arguments.length; i++) {
@@ -315,6 +324,7 @@
 
             return arr;
         },
+        //重新设置index中，为的是删除容易。parent.children.splice(this.index, 1);
         _setChildrenIndices: function() {
             this.children.each(function(child, n) {
                 child.index = n;

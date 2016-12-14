@@ -34,6 +34,20 @@ fire:
    function(eventType, evt, bubble)   bubble为true则表示触发事件并冒泡
    this._fireAndBubble(eventType, evt);  向父级冒泡this._fireAndBubble.call(this.parent, eventType, evt);
    this._fire(eventType, evt);  从this.eventListener中查找并触发事件处理程序，currentTarget 就是节点自己。
+
+2、Node的初始化
+   this._id = Konva.idCounter++;
+   this.eventListeners = {};
+   this.attrs = {};
+   this._cache = {};
+   this._filterUpToDate = false;
+   this.setAttrs(config);  // 属性保存到attrs中
+   另外还绑定了一些系统事件
+3、Container的初始化
+   this.children = new Konva.Collection(); //实例化集合对象
+   Konva.Node.call(this, config); //直接调用基类的构造函数
+   初始化过程如此简单，那就再深究一下吧，Container 到底有什么功能。
+
 阅读所得待总结：
 继承方法
 向后兼容提示
