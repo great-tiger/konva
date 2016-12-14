@@ -64,7 +64,9 @@ fire:
 4、Stage初始化
    this._buildDOM()
       构建content并append到container中 <div class="konvajs-content" role="presentation" style="position: relative;"></div>
-
+      this.bufferCanvas = new Konva.SceneCanvas();  设置Canvas
+      this.bufferHitCanvas = new Konva.HitCanvas({pixelRatio: 1});  设置Canvas
+      _resizeDOM()  调整画布大小和画布容器大小
 
 5、Canvas.js解析
    Konva.SceneCanvas
@@ -96,7 +98,7 @@ fire:
 
    Konva.SceneContext
         在基类的基础上提供了几个工具方法
-        
+
    Konva.HitContext
         在基类的基础上提供了几个工具方法
 阅读所得待总结：
