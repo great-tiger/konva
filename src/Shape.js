@@ -297,6 +297,7 @@
                 // layer might be undefined if we are using cache before adding to layer
                 if (!caching) {
                     if (layer) {
+                        //矩阵变换由layer控制，具体可以查看有关的注释。
                         layer._applyTransform(this, context, top);
                     } else {
                         var o = this.getAbsoluteTransform(top).getMatrix();

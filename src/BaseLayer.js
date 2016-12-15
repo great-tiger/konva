@@ -202,6 +202,7 @@
         // the apply transform method is handled by the Layer and FastLayer class
         // because it is up to the layer to decide if an absolute or relative transform
         // should be used
+        // 由层来决定如何应用变化
         _applyTransform: function(shape, context, top) {
             var m = shape.getAbsoluteTransform(top).getMatrix();
             context.transform(m[0], m[1], m[2], m[3], m[4], m[5]);
@@ -210,6 +211,7 @@
     Konva.Util.extend(Konva.BaseLayer, Konva.Container);
 
     // add getters and setters
+    // 如何未设置该参数，默认为true。layer.draw时，会先清空
     Konva.Factory.addGetterSetter(Konva.BaseLayer, 'clearBeforeDraw', true);
     /**
      * get/set clearBeforeDraw flag which determines if the layer is cleared or not

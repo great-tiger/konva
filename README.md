@@ -127,8 +127,54 @@ fire:
 12、Rect.js解析
    这个类继承自Shape，其实在这个类里的主要工作就是指定怎么画。即指定绘画函数 this.sceneFunc(this._sceneFunc);
 13、Layer.js中draw处理流程
-   
+   调用Node.js中定义的方法
+   draw: function() {
+      this.drawScene(); 
+      this.drawHit();
+      return this;
+   }
+
+   Layer.drawScene 由子类 Layer.js 提供
+      默认清空画布
+      接着调用Container.drawScene 在这个方法中最重要的就是 this._drawChildren(canvas, 'drawScene', top, false, caching);
+      Container._drawChildren 中就干了点什么呢?
+         Clip相关的操作
+         遍历孩子，调用孩子的drawScene方法，测试例子调用Shape.drawScene方法
+         drawScene: function(can, top, caching, skipBuffer) {
+            var layer = this.getLayer(),
+                canvas = can || layer.getCanvas(),
+                context = canvas.getContext(),
+                cachedCanvas = this._cache.canvas,
+                drawFunc = this.sceneFunc(),
+                hasShadow = this.hasShadow(),
+                hasStroke = this.hasStroke(),
+                stage, bufferCanvas, bufferContext;
+
+            context.save();
+            // if buffer canvas is needed
+            if (this._useBufferCanvas(caching) && !skipBuffer) {
+            }
+            // if buffer canvas is not needed
+            else {
+                context._applyLineJoin(this);
+                // layer might be undefined if we are using cache before adding to layer
+                if (!caching) {
+                    if (layer) {
+                        //由层来决定如何应用变化矩阵,this这里是一个Rect。具体可查看代码中注释。
+                        layer._applyTransform(this, context, top);
+                    }
+                }
+
+                drawFunc.call(this, context);//真正的绘画逻辑
+                
+            }
+            context.restore();
+            return this;
+        }
+15、Konva.Transform对矩阵操作的封装
+
 阅读所得待总结：
 继承方法
 向后兼容提示
 Konva.Collection
+absolute就是相对于根吧

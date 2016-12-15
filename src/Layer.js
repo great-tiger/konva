@@ -163,15 +163,15 @@
             return {};
         },
         drawScene: function(can, top) {
-            var layer = this.getLayer(),
-                canvas = can || (layer && layer.getCanvas());
+            var layer = this.getLayer(),//BaseLayer中定义，返回自己
+                canvas = can || (layer && layer.getCanvas());//返回Layer所属的SceneCanvas对象
 
             this._fire(BEFORE_DRAW, {
                 node: this
             });
 
             if(this.getClearBeforeDraw()) {
-                canvas.getContext().clear();
+                canvas.getContext().clear();//调用SceneContext中的clear-->>_context.clearRect()
             }
 
             Konva.Container.prototype.drawScene.call(this, canvas, top);

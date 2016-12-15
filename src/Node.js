@@ -1381,6 +1381,7 @@ fire
          * @memberof Konva.Node.prototype
          * @returns {Konva.Transform}
          */
+        //获取变化矩阵，如果没有参数的话是可以缓存的，如果有参数就不缓存了。
         getAbsoluteTransform: function(top) {
             // if using an argument, we can't cache the result.
             if (top) {
@@ -1396,14 +1397,16 @@ fire
                 transformsEnabled, trans;
 
             // start with stage and traverse downwards to self
+            // 查找所有的父级节点比如:[node,layer,stage],分别调用回调函数
+            // absolute就是相对于根吧
             this._eachAncestorReverse(function(node) {
-                transformsEnabled = node.transformsEnabled();
-                trans = node.getTransform();
+                transformsEnabled = node.transformsEnabled();//是否允许矩阵变换，默认是all.所有变换都允许。
+                trans = node.getTransform();//根据我们设置的属性，比如x,y坐标，构造一个变换矩阵。
 
                 if (transformsEnabled === 'all') {
                     at.multiply(trans);
                 }
-                else if (transformsEnabled === 'position') {
+                else if (transformsEnabled === 'position') {//只允许位置变换，可以提高性能。
                     at.translate(node.x(), node.y());
                 }
             }, top);
