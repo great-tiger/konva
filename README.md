@@ -105,7 +105,29 @@ fire:
         在基类的基础上提供了几个工具方法
 7、Group.js解析
    定义Group中只能添加Group、Shape，其它的其实没做什么。
-8、
+8、Layer.js解析
+   Layer中只能添加Group、Shape
+   Layer中包含自己的canvas元素,经验证一个层会生成一个canvas。
+   Layer初始化时
+      this.canvas = new Konva.SceneCanvas();
+      this.hitCanvas = new Konva.HitCanvas({
+          pixelRatio: 1
+      });
+9、一些全局对象意义
+   Konva.shapes={ "key":"value" }  key为一个颜色值，value是一个Shape对象
+10、BaseLayer.js解析
+   初始化其实除了调用基类的构造函数，其它什么也没做。
+   getCanvas() 返回Layer所属的SceneCanvas对象。
+   getContext() 返回的是 Konva.SceneContext(this); 对象。每一个SceneCanvas对象，都有一个SceneContext上下文。
+11、Shape.js解析
+   初始化时，把自己保存在Konva.shapes中。
+   getCanvas  调用BaseLayer.js中的getCanvas
+   getContext 调用BaseLayer.js中的getContext
+   destroy 销毁自己
+12、Rect.js解析
+   这个类继承自Shape，其实在这个类里的主要工作就是指定怎么画。即指定绘画函数 this.sceneFunc(this._sceneFunc);
+13、Layer.js中draw处理流程
+   
 阅读所得待总结：
 继承方法
 向后兼容提示
