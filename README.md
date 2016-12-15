@@ -103,6 +103,9 @@ fire:
 
    Konva.HitContext
         在基类的基础上提供了几个工具方法
+7、Group.js解析
+   定义Group中只能添加Group、Shape，其它的其实没做什么。
+8、
 阅读所得待总结：
 继承方法
 向后兼容提示
