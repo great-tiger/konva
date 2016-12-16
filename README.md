@@ -82,7 +82,7 @@ fire:
     都是遍历所有孩子，drawScene和drawHit。
     当调用Stage.draw()方法时，所有的节点都会被清除然后重画。显然有时候是没有必要的，我们调用Layer.draw就行了。
     如果我们直接调用Rect.draw()时，会调用Shape中的drawScene和drawHit方法，会在屏幕上直接画自己。原来的不会被删除。觉得这里库需要优化一下。
-    
+
 5、Canvas.js解析
    Konva.SceneCanvas
    Konva.HitCanvas
@@ -217,3 +217,11 @@ fire:
 向后兼容提示
 Konva.Collection
 absolute就是相对于根吧
+如何查找鼠标选中的元素的，通过从hitCanvas中取个颜色，然后从Konva.shapes中查找。
+   生成一个Shape的时候，会生成一个colorKey,然后把新生成的对象保存在Konva.shapes中。HitCanvas会用这个颜色填充，下面是HitContext中相关的代码。
+   _fill: function(shape) {
+            this.save();
+            this.setAttr('fillStyle', shape.colorKey);
+            shape._fillFuncHit(this);
+            this.restore();
+   }

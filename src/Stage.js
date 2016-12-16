@@ -314,6 +314,7 @@
          * // or if you interested in shape parent:
          * var group = stage.getIntersection({x: 50, y: 50}, 'Group');
          */
+        //通过现在光标所在的位置，获取Node
         getIntersection: function(pos, selector) {
             var layers = this.getChildren(),
                 len = layers.length,
