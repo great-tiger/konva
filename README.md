@@ -230,4 +230,4 @@ EVENTS = [MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEOUT, TOUCHSTART, TOUCHMOVE, TOUCHE
 
 
 坑：
-  经测试，Layer.setZIndex设置无效。
+  经测试，Layer.setZIndex设置无效。但是当调用完draw方法后，再设置setZIndex就又起作用了。
