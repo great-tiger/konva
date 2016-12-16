@@ -207,6 +207,7 @@
          * @memberof Konva.Stage.prototype
          * @returns {Object}
          */
+        //触发鼠标事件时，会调用_setPointerPosition把当前鼠标的位置信息放入到this.pointerPos中存储。
         getPointerPosition: function() {
             return this.pointerPos;
         },
@@ -652,8 +653,9 @@
         _wheel: function(evt) {
             this._mousewheel(evt);
         },
+        //把当前鼠标的位置，保存到this.pointerPos中，相对于content左上角的坐标。
         _setPointerPosition: function(evt) {
-            var contentPosition = this._getContentPosition(),
+            var contentPosition = this._getContentPosition(),//使用getBoundingClientRect，获取this.content元素所在的位置。
                 x = null,
                 y = null;
             evt = evt ? evt : window.event;
