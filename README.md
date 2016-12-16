@@ -227,3 +227,7 @@ absolute就是相对于根吧
    }
 Konva从Dom监听下面这些事件，其它的事件，都是这些事件模拟出来的。
 EVENTS = [MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEOUT, TOUCHSTART, TOUCHMOVE, TOUCHEND, MOUSEOVER, DOMMOUSESCROLL, MOUSEWHEEL, WHEEL]
+
+
+坑：
+  经测试，Layer.setZIndex设置无效。
