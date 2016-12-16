@@ -203,7 +203,7 @@ fire:
             return this;
         }
    似乎看上去drawScene与drawHit没有什么区别?本质上的区别体现在哪里呢？
-     就是Shape.drawHit方法中的这句：drawFunc = this.hitFunc() || this.sceneFunc()。Image中提供了hitFunc函数。
+     就是Shape.drawHit方法中的这句：drawFunc = this.hitFunc() || this.sceneFunc()。Image中提供了hitFunc函数。可以用来自定义hit区域。
 
 15、Konva.Transform对矩阵操作的封装
 
