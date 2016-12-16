@@ -62,13 +62,21 @@ fire:
    destroyChildren()
    等等吧，主要集中了集合的增、删、找、克隆。剩下的就是与canvas绘画有关的api了。
 4、Stage初始化
-   this._buildDOM()
-      构建content并append到container中 <div class="konvajs-content" role="presentation" style="position: relative;"></div>
-      this.bufferCanvas = new Konva.SceneCanvas();  设置Canvas
-      this.bufferHitCanvas = new Konva.HitCanvas({pixelRatio: 1});  设置Canvas
-      _resizeDOM()  调整画布大小和画布容器大小
-   _bindContentEvents()  
-      在<div class="konvajs-content" role="presentation" style="position: relative;"></div>上绑定事件。
+    this._buildDOM()
+       构建content并append到container中 <div class="konvajs-content" role="presentation" style="position: relative;"></div>
+       this.bufferCanvas = new Konva.SceneCanvas();  设置Canvas
+       this.bufferHitCanvas = new Konva.HitCanvas({pixelRatio: 1});  设置Canvas
+       _resizeDOM()  调整画布大小和画布容器大小
+    _bindContentEvents()  
+       在<div class="konvajs-content" role="presentation" style="position: relative;"></div>上绑定事件。
+
+   Stage中重要的概念
+    Stage包含多个层，每个层对应一个canvas元素。下面的代码验证了这个事实。
+    add: function(layer) {
+       Konva.Container.prototype.add.call(this, layer);
+       layer.draw();
+       this.content.appendChild(layer.canvas._canvas);
+    }
 
 5、Canvas.js解析
    Konva.SceneCanvas
