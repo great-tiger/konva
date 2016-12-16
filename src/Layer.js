@@ -187,7 +187,7 @@
                 canvas = can || (layer && layer.hitCanvas);
 
             if(layer && layer.getClearBeforeDraw()) {
-                layer.getHitCanvas().getContext().clear();
+                layer.getHitCanvas().getContext().clear();//不要被迷惑了：layer.hitCanvas == layer.getHitCanvas()
             }
 
             Konva.Container.prototype.drawHit.call(this, canvas, top);

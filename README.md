@@ -142,8 +142,7 @@ fire:
       return this;
    }
 
-   Layer.drawScene 由子类 Layer.js 提供
-      默认清空画布
+   Layer.drawScene 由子类 Layer.js 提供  默认清空画布
       接着调用Container.drawScene 在这个方法中最重要的就是 this._drawChildren(canvas, 'drawScene', top, false, caching);
       Container._drawChildren 中就干了点什么呢?
          Clip相关的操作
@@ -179,6 +178,33 @@ fire:
             context.restore();
             return this;
         }
+   Layer.drawHit 由子类 Layer.js 提供 逻辑和Layer.drawScene相同，默认清空画布
+      接着调用Container.drawHit 在这个方法中最重要的就是 this._drawChildren(canvas, 'drawHit', top);
+      Container._drawChildren 中就干了点什么呢?
+         Clip相关的操作
+         遍历孩子，调用孩子的drawHit方法，测试例子调用Shape.drawHit方法
+         drawHit: function(can, top, caching) {
+            var layer = this.getLayer(),
+                canvas = can || layer.hitCanvas,
+                context = canvas.getContext(),
+                drawFunc = this.hitFunc() || this.sceneFunc(),
+                cachedCanvas = this._cache.canvas,
+                cachedHitCanvas = cachedCanvas && cachedCanvas.hit;
+
+            context.save();
+            context._applyLineJoin(this);
+            if (!caching) {
+                if (layer) {
+                    layer._applyTransform(this, context, top);
+                }
+            }
+            drawFunc.call(this, context);
+            context.restore();
+            return this;
+        }
+   似乎看上去drawScene与drawHit没有什么区别?本质上的区别体现在哪里呢？
+     就是Shape.drawHit方法中的这句：drawFunc = this.hitFunc() || this.sceneFunc()。Image中提供了hitFunc函数。
+
 15、Konva.Transform对矩阵操作的封装
 
 阅读所得待总结：

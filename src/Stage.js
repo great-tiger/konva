@@ -712,6 +712,7 @@
             // the buffer canvas pixel ratio must be 1 because it is used as an
             // intermediate canvas before copying the result onto a scene canvas.
             // not setting it to 1 will result in an over compensation
+            // 为什么叫做buffer呢？因为这两个属性对应的canvas元素并没有放置到DOM树中。
             this.bufferCanvas = new Konva.SceneCanvas();
             this.bufferHitCanvas = new Konva.HitCanvas({pixelRatio: 1});
 
