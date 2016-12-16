@@ -225,3 +225,5 @@ absolute就是相对于根吧
             shape._fillFuncHit(this);
             this.restore();
    }
+Konva从Dom监听下面这些事件，其它的事件，都是这些事件模拟出来的。
+EVENTS = [MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEOUT, TOUCHSTART, TOUCHMOVE, TOUCHEND, MOUSEOVER, DOMMOUSESCROLL, MOUSEWHEEL, WHEEL],
