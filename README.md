@@ -7,7 +7,7 @@ Layer->BaseLayer->Container->Node
 Rect->Shape->Node  
 
 #使用时，注意事项
-Stage下只能添加Layer，不是Layer会报错的。
+Stage下只能添加Layer，不是Layer会报错的。Stage没有自己的Canvas元素。
 
 Konva中的集合对象
 Konva.Collection 继承自数组，主要提供了each方法。
