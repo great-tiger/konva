@@ -78,6 +78,11 @@ fire:
        this.content.appendChild(layer.canvas._canvas);
     }
 
+    当我们调用Stage对象的draw()方法时，实质上调用的是Node.draw方法。与调用Layer.draw()方法，走的逻辑一样。
+    都是遍历所有孩子，drawScene和drawHit。
+    当调用Stage.draw()方法时，所有的节点都会被清除然后重画。显然有时候是没有必要的，我们调用Layer.draw就行了。
+    如果我们直接调用Rect.draw()时，会调用Shape中的drawScene和drawHit方法，会在屏幕上直接画自己。原来的不会被删除。觉得这里库需要优化一下。
+    
 5、Canvas.js解析
    Konva.SceneCanvas
    Konva.HitCanvas
