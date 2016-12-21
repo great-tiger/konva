@@ -57,12 +57,12 @@
      */
     Konva.Animation = function(func, layers) {
         var Anim = Konva.Animation;
-        this.func = func;
+        this.func = func;//更新函数  会接收一个frame对象 frame.frameRate 每秒动画执行的次数
         this.setLayers(layers);
         this.id = Anim.animIdCounter++;
         this.frame = {
-            time: 0,
-            timeDiff: 0,
+            time: 0,//动画运行的时间总数
+            timeDiff: 0,//距离上一帧的时间间隔
             lastTime: now()
         };
     };
@@ -133,6 +133,7 @@
          * @memberof Konva.Animation.prototype
          * @return {Bool} is animation running?
          */
+        //该动画是否在运行
         isRunning: function() {
             var a = Konva.Animation,
                 animations = a.animations,
@@ -157,7 +158,7 @@
             this.stop();
             this.frame.timeDiff = 0;
             this.frame.lastTime = now();
-            Anim._addAnimation(this);
+            Anim._addAnimation(this);//开始动画
             return this;
         },
         /**
@@ -170,6 +171,7 @@
             Konva.Animation._removeAnimation(this);
             return this;
         },
+        //更新frame对象
         _updateFrameObject: function(time) {
             this.frame.timeDiff = time - this.frame.lastTime;
             this.frame.lastTime = time;
@@ -181,10 +183,12 @@
     Konva.Animation.animIdCounter = 0;
     Konva.Animation.animRunning = false;
 
+    //添加动画对象到Konva.Animation.animations = []中
     Konva.Animation._addAnimation = function(anim) {
         this.animations.push(anim);
         this._handleAnimation();
     };
+    //从Konva.Animation.animations = []中删除动画对象
     Konva.Animation._removeAnimation = function(anim) {
         var id = anim.id,
             animations = this.animations,
@@ -199,6 +203,7 @@
         }
     };
 
+    //调用更新函数，并在提供的Layer上调用draw函数。
     Konva.Animation._runFrames = function() {
         var layerHash = {},
             animations = this.animations,
@@ -250,6 +255,7 @@
             layerHash[key].draw();
         }
     };
+    //通过requestAnimFrame构造出的动画循环，每一次循环都会触发Konva.Animation._runFrames方法。
     Konva.Animation._animationLoop = function() {
         var Anim = Konva.Animation;
         if(Anim.animations.length) {

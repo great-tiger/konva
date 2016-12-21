@@ -211,6 +211,9 @@ fire:
      就是Shape.drawHit方法中的这句：drawFunc = this.hitFunc() || this.sceneFunc()。Image中提供了hitFunc函数。可以用来自定义hit区域。
 
 15、Konva.Transform对矩阵操作的封装
+16、Animation
+    每一个动画都对应一个Animation对象，该对象被保存在Konva.Animation.animations=[]数组中。
+    看了一下源码发现Animation对象，在动画当中起到的作用很小，就是数据封装而已。
 
 阅读所得待总结：
 继承方法
