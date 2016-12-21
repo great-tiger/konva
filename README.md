@@ -226,7 +226,15 @@ fire:
     });
     所以在拖拽的过程中,只要控制好this.dirty这个值就可以了
 
-    
+    如果有一个Group，Group中有一个矩形。如果同时设置了draggable为true。点击矩形时，矩形的drag生效。
+    this.on('mousedown.konva touchstart.konva', function(evt) {
+        if(!Konva.DD.node) {//这里解释了第一个生效
+            that.startDrag(evt);
+        }
+    });
+
+
+
 阅读所得待总结：
 继承方法
 向后兼容提示
@@ -242,7 +250,7 @@ absolute就是相对于根吧
    }
 Konva从Dom监听下面这些事件，其它的事件，都是这些事件模拟出来的。
 EVENTS = [MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEOUT, TOUCHSTART, TOUCHMOVE, TOUCHEND, MOUSEOVER, DOMMOUSESCROLL, MOUSEWHEEL, WHEEL]
-
+阅读源码时，要充分利用chrome的堆栈信息，点击可跳转到对应的代码
 
 坑：
   经测试，Layer.setZIndex设置无效。但是当调用完draw方法后，再设置setZIndex就又起作用了。
