@@ -217,6 +217,16 @@ fire:
 17、DragAndDrop
     看这部分代码的时候，总是找不到拖拽的入口。即什么时候绑定的mousedown事件设置的拖拽node。
     实质上是通过setDraggable方法绑定的mousedown事件。即使是配置的draggable为true，在设置该属性的时候，还是会触发setDraggable方法。
+
+    拖拽是通过动画来实现的
+    new Konva.Animation(function() {
+        var b = this.dirty;
+        this.dirty = false;
+        return b;//返回值决定了是否需要重新重绘
+    });
+    所以在拖拽的过程中,只要控制好this.dirty这个值就可以了
+
+    
 阅读所得待总结：
 继承方法
 向后兼容提示
