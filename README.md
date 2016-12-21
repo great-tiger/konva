@@ -214,7 +214,9 @@ fire:
 16、Animation
     每一个动画都对应一个Animation对象，该对象被保存在Konva.Animation.animations=[]数组中。
     看了一下源码发现Animation对象，在动画当中起到的作用很小，就是数据封装而已。
-
+17、DragAndDrop
+    看这部分代码的时候，总是找不到拖拽的入口。即什么时候绑定的mousedown事件设置的拖拽node。
+    实质上是通过setDraggable方法绑定的mousedown事件。即使是配置的draggable为true，在设置该属性的时候，还是会触发setDraggable方法。
 阅读所得待总结：
 继承方法
 向后兼容提示
