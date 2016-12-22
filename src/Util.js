@@ -243,7 +243,7 @@
             return this;
         },
         /**
-         * Invert the matrix
+         * Invert the matrix 逆矩阵
          * @method
          * @memberof Konva.Transform.prototype
          * @returns {Konva.Transform}

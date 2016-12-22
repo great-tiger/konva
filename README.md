@@ -251,6 +251,7 @@ absolute就是相对于根吧
 Konva从Dom监听下面这些事件，其它的事件，都是这些事件模拟出来的。
 EVENTS = [MOUSEDOWN, MOUSEMOVE, MOUSEUP, MOUSEOUT, TOUCHSTART, TOUCHMOVE, TOUCHEND, MOUSEOVER, DOMMOUSESCROLL, MOUSEWHEEL, WHEEL]
 阅读源码时，要充分利用chrome的堆栈信息，点击可跳转到对应的代码
+逆矩阵的应用invert
 
 坑：
   经测试，Layer.setZIndex设置无效。但是当调用完draw方法后，再设置setZIndex就又起作用了。
